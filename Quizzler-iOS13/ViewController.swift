@@ -62,23 +62,21 @@ class ViewController: UIViewController {
             print("end, restarting")
             questionNumber = 0
         }
-        updateUI()
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+        
+        ()
+        
+        
     }
     
-    func updateUI() {
+    @objc func updateUI() {
         if (questionNumber < quiz.count) {
             questionLabel.text = quiz[questionNumber].text
-            
-            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateButton), userInfo: nil, repeats: false)
-
+            trueButton.backgroundColor = UIColor.clear
+            falseButton.backgroundColor = UIColor.clear
         }
         
-    }
-    
-    @objc func updateButton() {
-        
-        trueButton.backgroundColor = UIColor.clear
-        falseButton.backgroundColor = UIColor.clear
     }
     
 }
